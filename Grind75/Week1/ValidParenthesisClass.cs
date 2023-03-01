@@ -26,16 +26,14 @@ namespace Grind75
                 }
                 else
                 {
-                    if (_parenthesisDict[currentChar] == openParenthesis.FirstOrDefault())
+                    if (_parenthesisDict[currentChar] == openParenthesis.Peek())
                         openParenthesis.Pop();
                     else
                         return false;
                 }
             }
 
-            if (openParenthesis.Count == 0) return true;
-
-            return false;
+            return openParenthesis.Count() == 0;
         }
     }
 }
