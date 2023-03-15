@@ -10,14 +10,8 @@ namespace Grind75.Week2
     {
         public int LongestPalindrome(string s)
         {
-            var lettersDict = new Dictionary<char, int>();
-            for (char c = 'a'; c <= 'z'; c++)
-                lettersDict[c] = 0;
-            for (char c = 'A'; c <= 'Z'; c++)
-                lettersDict[c] = 0;
-
-            foreach (char c in s)
-                lettersDict[c]++;
+            var lettersDict = s.GroupBy(s => s)
+                .ToDictionary(g => g.Key, g => g.Count());
 
 
             bool oddFound = false;

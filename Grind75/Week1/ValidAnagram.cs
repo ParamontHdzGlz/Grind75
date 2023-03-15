@@ -11,14 +11,10 @@ namespace Grind75
 
         public bool IsAnagram(string s, string t)
         {
-            var originalDict = new Dictionary<char, int>();
-            foreach (char c in s)
-            {
-                if (originalDict.ContainsKey(c))
-                    originalDict[c]++;
-                else
-                    originalDict.Add(c, 1);
-            }
+
+            var originalDict = s
+                .GroupBy(s => s)
+                .ToDictionary(g => g.Key, g => g.Count());
 
             foreach(char c in t)
             {
