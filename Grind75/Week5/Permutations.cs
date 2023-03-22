@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace Grind75.Week5
 {
-    internal class Permutations
+    public class Permutations
     {
         public IList<IList<int>> Permute(int[] nums)
         {
 
-            if (nums.Length == 0)
-                return (IList<IList<int>>) new List<List<int>> { new List<int>() };
+            if (nums.Length == 1)
+                return new List<IList<int>> { new List<int> { nums[0] } };
 
             int first = nums[0];
-            int[] rest = nums.Skip(0).ToArray();
+            int[] rest = nums.Skip(1).ToArray();
 
             var permutationsWithoutFirst = Permute(rest);
 
-            var allPermutations = new List<List<int>>();
-
+            var allPermutations = new List<IList<int>>();
             foreach (var perm in permutationsWithoutFirst)
             {
-                for (int i = 0; i < perm.Count; i++)
+                for (int i = 0; i <= perm.Count; i++)
                 {
                     var newPerm = new List<int>();
                     newPerm.AddRange(((List<int>)perm).GetRange(0, i));
@@ -34,7 +33,7 @@ namespace Grind75.Week5
                 }
             }
 
-            return (IList<IList<int>>)allPermutations;
+            return allPermutations;
         }
     }
 }
