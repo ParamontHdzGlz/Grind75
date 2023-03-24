@@ -68,16 +68,14 @@ namespace Grind75.Week4
 
 
         // First Approach: combine hashset of all land with FLoodFill problem
-        // to expensive memory wise.
+        // too expensive memory wise.
         public int NumIslands1(char[][] grid)
         {
-            int nRows = grid.Length;
-            int nCols = grid[0].Length;
-            var existingLand = new HashSet<(int, int)>(); // all positions with 1's
-
-            for (int i = 0; i < nRows; i++)
+            // getting all land coordinates
+            var existingLand = new HashSet<(int, int)>();
+            for (int i = 0; i < grid.Length; i++)
             {
-                for (int j = 0; j < nCols; j++)
+                for (int j = 0; j < grid[0].Length; j++)
                 {
                     if (grid[i][j] == '1')
                         existingLand.Add((i, j));
@@ -97,7 +95,7 @@ namespace Grind75.Week4
 
 
 
-
+        // BFS
         private void ParseIslands1(char[][] grid, int initX, int initY, HashSet<(int, int)> allLand)
         {
 
@@ -106,6 +104,7 @@ namespace Grind75.Week4
             while (pixelsToProcess.Count > 0)
             {
                 (int x, int y) = pixelsToProcess.Dequeue();
+                allLand.Remove((x, y));
 
                 // add valid neighbours
                 if (allLand.Contains((x - 1, y)))
@@ -120,7 +119,6 @@ namespace Grind75.Week4
                 if (allLand.Contains((x, y + 1)))
                     pixelsToProcess.Enqueue((x, y + 1));
 
-                allLand.Remove((x, y));
             }
 
         }

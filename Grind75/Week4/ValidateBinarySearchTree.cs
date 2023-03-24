@@ -13,10 +13,10 @@ namespace Grind75.Week4
         // checking against boundries Up-Down
         public bool IsValidBST(TreeNode root)
         {
-            return ValidateRecursive(root, int.MinValue, int.MaxValue);
+            return ValidateRecursive(root, Int64.MinValue, Int64.MaxValue);
         }
 
-        private bool ValidateRecursive(TreeNode node, int left, int right)
+        private bool ValidateRecursive(TreeNode node, Int64 left, Int64 right)
         {
             if (node == null)
                 return true;
