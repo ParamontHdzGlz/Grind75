@@ -86,7 +86,7 @@ namespace Grind75.Week4
             while (existingLand.Count > 0)
             {
                 (int x, int y) = existingLand.First();
-                ParseIslands1(grid, x, y, existingLand);
+                ParseIslandsBFS1(grid, x, y, existingLand);
                 nIslands++;
             }
 
@@ -96,7 +96,7 @@ namespace Grind75.Week4
 
 
         // BFS
-        private void ParseIslands1(char[][] grid, int initX, int initY, HashSet<(int, int)> allLand)
+        private void ParseIslandsBFS1(char[][] grid, int initX, int initY, HashSet<(int, int)> allLand)
         {
 
             var pixelsToProcess = new Queue<(int, int)>(new[] { (initX, initY) });
