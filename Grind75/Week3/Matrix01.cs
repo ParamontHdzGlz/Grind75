@@ -14,6 +14,7 @@ namespace Grind75.Week3
             int nCols = mat[0].Length;
             Queue<(int row, int col)> queue = new Queue<(int, int)>();
 
+            // get all 0 coordinates and mark non zeros as -1
             for (int i = 0; i < nRows; i++)
             {
                 for (int j = 0; j < nCols; j++)

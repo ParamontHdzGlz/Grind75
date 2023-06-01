@@ -11,7 +11,7 @@ namespace Grind75.Week3
         public Node CloneGraph(Node node)
         {
             if (node == null) return null;
-            var nodeDict = new Dictionary<Node, Node>();
+            var nodeDict = new Dictionary<Node, Node>(); // key: origial node, value: clone
             return ProcessNode(node, nodeDict);
         }
 
